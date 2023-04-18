@@ -1,6 +1,7 @@
 package rf.com.tienda.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import rf.com.tienda.dominio.Usuario;
 import rf.com.tienda.exception.DomainException;
+import rf.com.tienda.servicio.IgenericoService;
 import rf.com.tienda.servicio.UsuarioService;
 
 
@@ -23,10 +25,10 @@ import rf.com.tienda.servicio.UsuarioService;
 public class UsuarioController {
 	
 	@Autowired
-	private UsuarioService userService;
+	private IgenericoService<Usuario,Long> userService;
 	
 	@GetMapping("/{id}")
-	public Usuario leerUno(@PathVariable("id") Long id) {		
+	public Optional<Usuario> leerUno(@PathVariable("id") Long id) {		
 		return userService.leerPorId(id);
 	}
 	
@@ -36,7 +38,7 @@ public class UsuarioController {
 	}
 	
 	@PostMapping
-	public Usuario  alta(@RequestBody Usuario c) {
+	public Usuario  alta(@RequestBody Usuario c) throws DomainException {
 		c.setId_usuario(0l);
 		return userService.crear(c);
 

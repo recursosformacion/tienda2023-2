@@ -7,9 +7,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
+@SpringBootApplication  //(exclude = {DataSourceAutoConfiguration.class })
 @ComponentScan({"rf.com.tienda"})
-// EnableJpaRepositories(basePackages = {"rf.com.tienda.repository"})
+@EnableJpaRepositories(basePackages = {"rf.com.tienda.repository"})
 public class MggTienda2023Application {
 
 	public static void main(String[] args) {

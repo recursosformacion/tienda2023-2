@@ -1,18 +1,20 @@
 package rf.com.tienda.servicio;
 
 import java.util.List;
+import java.util.Optional;
 
 import rf.com.tienda.dominio.Categoria;
 import rf.com.tienda.exception.DomainException;
 
 public interface ICategoriaService {
 
-	Categoria crear(Categoria categoria)  throws DomainException ;
+	boolean insert(Categoria categoria)  throws DomainException ;
 	
-	List<Categoria> leerTodos();
-	Categoria leerPorId(Long id);
+	List<Categoria> listAll();
 	
-	Categoria actualizar(Categoria categoria,Long id_categoria)  throws DomainException ;
+	Optional<Categoria> leerUno(Long id);
 	
-	void borrar(Long id_categoria);
+	boolean update(Categoria categoria,Long id_categoria)  throws DomainException ;
+	
+	boolean deleteById(Long id_categoria);
 }

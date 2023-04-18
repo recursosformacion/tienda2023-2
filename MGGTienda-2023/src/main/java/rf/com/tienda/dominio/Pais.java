@@ -11,7 +11,7 @@ import javax.persistence.Table;
 public class Pais {
 	
 	@Id
-	@GeneratedValue( strategy = GenerationType.TABLE)
+	@GeneratedValue( strategy = GenerationType.AUTO)
 	private int id_pais;
 	private String pais_nombre;
 	

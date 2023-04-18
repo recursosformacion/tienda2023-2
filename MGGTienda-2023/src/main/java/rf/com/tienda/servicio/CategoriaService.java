@@ -2,6 +2,7 @@ package rf.com.tienda.servicio;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,16 +18,16 @@ public class CategoriaService implements ICategoriaService {
 	private CategoriaRepository categoriaRepository;
 
 	@Override
-	public Categoria crear(Categoria categoria) {
-		return categoriaRepository.save(categoria);
+	public boolean insert(Categoria categoria) {
+		return categoriaRepository.save(categoria) != null;
 	}
 	@Override
-	public List<Categoria> leerTodos() {
+	public List<Categoria> listAll() {
 		return (List<Categoria>) categoriaRepository.findAll();
 	}
 
 	@Override
-	public Categoria actualizar(Categoria categoria, Long id_categoria) throws DomainException {
+	public boolean update(Categoria categoria, Long id_categoria) throws DomainException {
 
 		Categoria catDB = categoriaRepository.findById(id_categoria).get();
 
@@ -40,19 +41,20 @@ public class CategoriaService implements ICategoriaService {
 			catDB.setCat_descripcion(categoria.getCat_descripcion());
 		}
 
-		return categoriaRepository.save(catDB);
+		return categoriaRepository.save(catDB) != null;
 	}
 
 	@Override
-	public void borrar(Long id_categoria) {
-		categoriaRepository.deleteById(id_categoria);
+	public boolean deleteById(Long id_categoria) {
+		 categoriaRepository.deleteById(id_categoria);
+		 return true;
 
 	}
 
 	@Override
-	public Categoria leerPorId(Long id) {
-		categoriaRepository.findById(id);
-		return null;
+	public Optional<Categoria> leerUno(Long id) {
+		return categoriaRepository.findById(id);
+		
 	}
 
 }

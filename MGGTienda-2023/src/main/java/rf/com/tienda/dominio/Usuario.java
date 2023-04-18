@@ -18,7 +18,7 @@ import javax.persistence.Column;
 
 public class Usuario {
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id_usuario; // identificador de usuario
 
 	private String user_nombre; // nombre de usuario

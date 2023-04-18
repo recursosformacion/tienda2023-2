@@ -8,7 +8,7 @@ import rf.com.tienda.util.ErrorMessages;
 import rf.com.tienda.util.Validator;
 
 @Embeddable
-@Table(name="DIRECCIONES" )
+
 public class Direccion {
 
 	public transient static final int NOMBRE_LONG_MAX = 30;

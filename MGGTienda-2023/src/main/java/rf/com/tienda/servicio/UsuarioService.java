@@ -2,6 +2,7 @@ package rf.com.tienda.servicio;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -51,9 +52,9 @@ public class UsuarioService implements IgenericoService<Usuario,Long> {
 	}
 
 	@Override
-	public Usuario leerPorId(Long id) {
-		usuarioRepo.findById(id);
-		return null;
+	public Optional<Usuario> leerPorId(Long id) {
+		return usuarioRepo.findById(id);
+	
 	}
 	
 
